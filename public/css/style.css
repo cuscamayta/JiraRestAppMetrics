@@ -1,0 +1,71 @@
+.btn-log {
+    position: absolute;
+    top: 10px;
+    right: 72px;
+}
+
+.work-logged {
+    /*margin-right: 40px;*/
+    position: absolute !important;
+    top: 3px !important;
+    right: 8px !important;
+}
+
+.work-available {
+    position: absolute !important;
+    top: 27px !important;
+    right: 3px !important;
+}
+
+.btn-space {
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.element-relative {
+    position: relative;
+}
+
+.badge-logwork {
+    position: absolute !important;
+    top: 27px !important;
+    right: 53px !important;
+}
+
+.log-atention {
+    background: red;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(to bottom right, #E8400B, rgba(147, 66, 48, 0));
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(to bottom right, #E8400B, rgba(147, 66, 48, 0));
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(to bottom right, #E8400B, rgba(147, 66, 48, 0));
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #E8400B, rgba(147, 66, 48, 0));
+    /* Standard syntax (must be last) */
+}
+
+
+/*.view-container {
+    display: initial !important;
+}*/
+/*.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+.ion-checkbox-viewport {
+  max-height: 200px;
+  width:100%;
+  display:block !important;
+  overflow:scroll !important;
+}*/

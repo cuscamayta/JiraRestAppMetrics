@@ -1,0 +1,15 @@
+<ion-view view-title="Jira Mobile App" name="login-view">
+
+    <ion-content class="padding">
+        <img src="/img/favicon.png" alt="jira mobile" style="margin: 0 auto;height: 150px;width: auto;display: block;">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="Username" ng-model="data.userName">
+            </label>
+            <label class="item item-input">
+                <input type="password" placeholder="Password" ng-model="data.password">
+            </label>
+        </div>
+        <button class="button button-block button-balanced" ng-click="signIn(data)">Login</button>
+    </ion-content>
+</ion-view>

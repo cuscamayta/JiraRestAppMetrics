@@ -1,0 +1,57 @@
+<ion-view title="Metrical Setting">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+  </ion-nav-buttons>         
+  <ion-content padding="true">
+   <div class="card">
+      <div class="item item-divider">
+        Proyecto:
+      </div>
+      <div class="item item-text-wrap" modal-select="" on-select="loadSprintNumbers(newValue, oldValue)" ng-model="projectSelectMetrical" options="projects" modal-title="Seleccione el proyecto">            
+        <div class="option">
+          {{option.name}}
+        </div>
+        <input type="text"  placeholder="Seleccione el proyecto" ng-model="projectSelectMetrical.name" style="width: 100%;">        
+      </div>
+      <div class="item item-divider">
+        Versiones del proyecto:
+      </div>
+      <div  class="item item-text-wrap" modal-select="" on-select="SelectionVersion(newValue, oldValue)" ng-model="versionSelectMetrical" options="versionsProjectMetrical" modal-title="Seleccione la version del proyecto">
+        <div class="option">
+          {{option.name}}
+        </div>        
+        <input type="text"  placeholder="Seleccione la version del proyecto" ng-model="versionSelectMetrical.name" style="width: 100%;">
+      </div>
+      <div class="item item-divider">
+          Alcance:
+      </div>    
+      <div class="item item-text-wrap">
+        <ion-list>
+          
+          <ion-checkbox ng-model="choice" name="choice" ng-true-value="'sprint'" ng-false-value="''" ng-change="checkedOrNot(choice)">Sprint</ion-checkbox>            
+          <ion-checkbox ng-model="choice" name="choice" ng-true-value="'fechas'" ng-false-value="''" ng-change="checkedOrNot(choice)">Rango de fechas</ion-checkbox>
+          <div ng-show="choice == 'sprint'" class="item item-text-wrap" modal-select=""  on-select="SelectionSprint(newValue, oldValue)" ng-model="sprintSelectMetrical" options="sprintsByProjects" modal-title="Seleccione del sprint">
+            <div class="option">
+                {{option.name}}
+            </div> 
+            <input type="text"  placeholder="Seleccione el sprint" ng-model="sprintSelectMetrical.name" style="width: 100%;">
+            
+          </div>
+          <div ng-show="choice == 'fechas'">
+              <datepicker value='metricalSettings.startDate' label='Start Date'></datepicker>
+              <datepicker value='metricalSettings.endDate'   label='End Date'></datepicker>
+          </div>
+        </ion-list>          
+      </div>
+      <div class="item item-divider">
+          Tipo incidencia:
+      </div>    
+      <div class="item item-text-wrap" modal-select=""  on-select="SelectionTypeIssue(newValue, oldValue)" ng-model="issueTypesSelectMetrical" options="issueTypesProject" modal-title="Seleccione tipo de incidencia">
+        <div class="option">
+          {{option.name}}
+        </div>
+        <input type="text"  placeholder="Seleccione tipo de incidencia" ng-model="issueTypesSelectMetrical.name" style="width: 100%;">
+      </div>      
+   </div>
+  </ion-content>
+</ion-view>

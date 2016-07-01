@@ -1,0 +1,49 @@
+<ion-view title="Metrical Detail">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+    </ion-nav-buttons>
+    <ion-content padding="true">
+        <div class="bar bar-header">
+            <div class="h1 title">{{metricalDetailSettings.titleDetail}}</div>
+        </div>
+        <div class="content has-header ionic-pseudo">
+            <div class="list">
+                <div class="item item-divider">
+                    Alcance
+                </div>
+                <a class="item item-icon-left" href="#">
+                    <i class="icon {{iconClassMetricalDetail}}"></i>Proyecto :
+                    <span class="badge badge-balanced">{{metricalDetailSettings.project}}</span>
+                </a>
+
+                <a class="item item-icon-left" href="#">
+                    <i class="icon {{iconClassMetricalDetail}}"></i>Version :
+                    <span class="badge badge-balanced">{{metricalDetailSettings.version}}</span>
+                </a>
+                <a class="item item-icon-left" href="#">
+                    <i class="icon {{iconClassMetricalDetail}}"></i>Sprint :
+                    <span class="badge badge-balanced">{{metricalDetailSettings.sprint}}</span>
+                </a>
+
+                <a class="item item-icon-left" href="#">
+                    <i class="icon {{iconClassMetricalDetail}}"></i>Fecha inicio :
+                    <span class="badge badge-balanced">{{metricalDetailSettings.startDate}}</span>
+                </a>
+                <a class="item item-icon-left" href="#">
+                    <i class="icon {{iconClassMetricalDetail}}"></i>Fecha fin :
+                    <span class="badge badge-balanced">{{metricalDetailSettings.endDate}}</span>
+                </a>
+                <div class="item item-divider">
+                    Conteo por prioridad
+                </div>
+            </div>
+            <div class="list">
+                <div ng-repeat="priority in dataPriority">                    
+                    <a class="item item-icon-left" href="#">
+                        <i class="icon {{priority.iconClass}}"></i>{{priority.priority}} :
+                        <span class="badge badge-balanced">{{priority.count}}</span>
+                    </a>
+                </div>
+            </div>
+    </ion-content>
+</ion-view>

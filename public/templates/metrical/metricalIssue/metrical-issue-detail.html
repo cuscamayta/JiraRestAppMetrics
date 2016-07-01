@@ -1,0 +1,46 @@
+<ion-view view-title="Metric Issue Detail" ng-init='init()'>
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <div class="bar bar-header">
+            <div class="h1 title">{{settings.sprint.name }} - {{settings.project.name}} </div>
+        </div>
+        <div class="content has-header ionic-pseudo">
+
+            <div class="list">
+                <label class="item item-input"><i class="icon ion-person-stalker" style="font-size: 31px; margin-right: 10px"></i>
+                    <span class="input-label">Total Time</span>
+                    <input type="email" ng-model="totalTimeTeamString" readonly style="background-color:white; text-align: right; margin-right: 16px;font-weight: bold;font-size: 15px; placeholder="
+                    Enter total time ">              
+                </label>
+                <div ng-repeat="issueResume in listIssuesResume ">
+                    <div class="item item-divider ">
+                        Number of {{issueResume.issueType}}
+                    </div>
+                    <a class="item item-icon-left ">
+                        <i class="icon {{issueResume.iconClass}} "></i> Sprint Start
+                        <span class="badge badge-balanced ">{{issueResume.countStartSprint}} Issues</span>
+                    </a>
+                    <a class="item item-icon-left ">
+                        <i class="icon {{issueResume.iconClass}} "></i> End Sprint
+                        <span class="badge badge-balanced ">{{issueResume.countEndSprint}} Issues</span>
+                    </a>
+                    <a class="item item-icon-left ">
+                        <i class="icon ion-clock "></i> Time Stimate
+                        <span class="badge badge-balanced ">{{issueResume.timeStimateString}}</span>
+                    </a>
+                    <a class="item item-icon-left ">
+                        <i class="icon ion-clock "></i> Real Time
+                        <span class="badge badge-balanced ">{{issueResume.timeSpentString}}</span>
+                    </a>
+                    <a class="item item-icon-left ">
+                        <i class="icon ion-ios-paper "></i> Percent
+                        <span class="badge badge-energized ">{{issueResume.timeSpentPercent | number:2}} %</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>
