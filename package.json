@@ -14,7 +14,7 @@
     "express-session": "^1.7.6",
     "jira": "~0.9.2",
     "jira-api": "~0.2.2",
-    "node-linq": "0.4"
+    "node-linq": "0.0.5"
   },
   "engines": {
     "node": "0.12.2"
