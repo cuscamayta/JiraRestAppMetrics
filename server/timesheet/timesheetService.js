@@ -4,48 +4,49 @@ var linq = require('node-linq').LINQ,
     utils = require('../common/utils'),
     common = require('../common/common');
 
-exports.getTimeSheetInDates = function (data, user, startDate, endDate) {
+exports.getTimeSheetInDates = function(data, user, startDate, endDate) {
     try {
-    var workglogsByDate = getWorklogsByDate(data.issues, user),
-        workingDates = common.getDatesInRange(startDate, endDate);
-    return getSprintWithDatesAndWorklogs(workglogsByDate, workingDates);
-    }catch (error) {
+        var workglogsByDate = getWorklogsByDate(data.issues, user),
+            workingDates = common.getDatesInRange(startDate, endDate);
+        return getSprintWithDatesAndWorklogs(workglogsByDate, workingDates);
+    } catch (error) {
         return error;
     }
 }
 
 
-exports.getTimeSheetInSprint = function (data, user) {
-    try{
-    var sprintDetail = common.getSprintDetail(data.issues),
-        workglogsByDate = getWorklogsByDate(data.issues, user);
+exports.getTimeSheetInSprint = function(data, user) {
+    try {
+        var sprintDetail = common.getSprintDetail(data.issues),
+            workglogsByDate = getWorklogsByDate(data.issues, user);
 
-    return getSprintWithDatesAndWorklogs(workglogsByDate, sprintDetail.daysInSprint);
+        return getSprintWithDatesAndWorklogs(workglogsByDate, sprintDetail.daysInSprint);
     } catch (error) {
         return error;
     }
 }
 
 function getWorklogsByDate(issues, user) {
-    var worklogs = new linq(issues).SelectMany(function (issue) {
+    var worklogs = new linq(issues).SelectMany(function(issue) {
         issue = getWorklogsWithParent(issue);
         return issue
     }).items;
 
-    var workglogsByDate = new linq(worklogs).Where(function (worklog) {
+    var workglogsByDate = new linq(worklogs).Where(function(worklog) {
         return worklog.author.key == user;
-    }).GroupBy(function (worklogItem) {
-        return worklogItem.updated;
+    }).GroupBy(function(worklogItem) {
+        return worklogItem.started;
     })
+
     return workglogsByDate;
 }
 
 function getSprintWithDatesAndWorklogs(workglogsByDate, daysInSprint) {
     var dayNumber = 0,
         user = getUserForWorklog(workglogsByDate);
-
-    var datesWithWorklogs = new linq(daysInSprint).Select(function (day) {
+    var datesWithWorklogs = new linq(daysInSprint).Select(function(day) {
         var worklogsInDate = workglogsByDate[day];
+
         dayNumber++;
         return {
             date: day,
@@ -76,7 +77,7 @@ function getUserForWorklog(worklogs) {
 function getTotalTimeRegister(worklogs) {
     if (!worklogs) return 0;
 
-    var totalTimeSpent = new linq(worklogs).Sum(function (worklog) {
+    var totalTimeSpent = new linq(worklogs).Sum(function(worklog) {
         return worklog.timeSpentSeconds;
     });
 
@@ -84,8 +85,8 @@ function getTotalTimeRegister(worklogs) {
 }
 
 function getWorklogsWithParent(issue) {
-    var worklogs = new linq(issue.fields.worklog.worklogs).Map(function (worklog) {
-        worklog.updated = utils.toDate(worklog.updated);
+    var worklogs = new linq(issue.fields.worklog.worklogs).Map(function(worklog) {
+        worklog.started = utils.toDate(worklog.started);
         worklog.issue = { key: issue.key, issueType: issue.fields.issuetype.name };
         return worklog;
     });
