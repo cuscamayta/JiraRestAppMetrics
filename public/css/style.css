@@ -1,0 +1,186 @@
+.btn-log {
+    position: absolute;
+    top: 10px;
+    right: 72px;
+}
+
+.work-logged {
+    /*margin-right: 40px;*/
+    position: absolute !important;
+    top: 3px !important;
+    right: 8px !important;
+}
+
+.work-available {
+    position: absolute !important;
+    top: 27px !important;
+    right: 3px !important;
+}
+
+.btn-space {
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.element-relative {
+    position: relative;
+}
+
+.badge-logwork {
+    position: absolute !important;
+    top: 27px !important;
+    right: 53px !important;
+}
+
+.log-atention {
+    background: red;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(to bottom right, #E8400B, rgba(147, 66, 48, 0));
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(to bottom right, #E8400B, rgba(147, 66, 48, 0));
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(to bottom right, #E8400B, rgba(147, 66, 48, 0));
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #E8400B, rgba(147, 66, 48, 0));
+    /* Standard syntax (must be last) */
+}
+ .badgeNote.badgeNote-energized {
+    background-color: #51a825;
+    color: #fff;
+}
+.badgeNote.badgeNote-balanced {
+    background-color: #89afd7;;
+    color: #fff;
+}
+
+.badgeNote {
+    background-color: transparent;
+    color: #AAAAAA;
+    z-index: 1;
+    display: inline-block;
+    padding: 3px 8px;
+    min-width: 10px;
+    border-radius: 10px;
+    vertical-align: baseline;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+}
+.item .badgeNote {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    top: 16px;
+  
+}
+.bar.bar-positive {
+    border-color: #2e3d54;
+    background-color: #205081;
+    background-image: linear-gradient(0deg, #0c60ee, #0c60ee 50%, transparent 50%);
+    color: #fff;
+}
+
+.tabs-positive > .tabs, .tabs.tabs-positive {
+    border-color: #2e3d54;
+    background-color: #205081;
+    background-image: linear-gradient(0deg, #0c60ee, #0c60ee 50%, transparent 50%);
+    color: #fff;
+}
+
+
+.tabs .tab-item .badge.badge-balanced, .badge.badge-balanced {
+    background-color: #51a825;
+    color: #fff;
+}
+.tabs .tab-item .badge.badge-positive, .badge.badge-positive {
+    background-color: #89afd7;
+    color: #fff;
+}
+.button.button-balanced {
+    border-color: transparent;
+    background-color:#51a825;
+    color: #fff;
+}
+.button.button-balanced.active,
+.button.button-balanced.activated {
+    border-color: #a2a2a2;
+    background-color: #51a825;
+}
+.button.button-energized {
+    border-color: transparent;
+    background-color:#ec8e00;
+    color: #fff;
+}
+.button.button-energized.active,
+.button.button-energized.activated {
+    border-color: #a2a2a2;
+    background-color: #ec8e00;
+}
+.button.button-calm {
+    border-color: transparent;
+    background-color: #89afd7;
+    color: #fff;
+}
+.button.button-calm.active,
+.button.button-calm.activated {
+    border-color: #a2a2a2;
+    background-color: #89afd7;
+}
+.button.button-positive {
+    border-color: transparent;
+    background-color: #3572b0;
+    color: #fff;
+}
+.button.button-positive.active,
+.button.button-positive.activated {
+    border-color: #a2a2a2;
+    background-color: #3572b0;
+}
+
+.toggle input:checked + .track {
+    border-color: #89afd7;
+    background-color: #89afd7;
+}
+.pickadate-cell .pickadate-active {
+    background-color: #205081;
+}
+
+.text-icon-login{
+    position: absolute;
+    top: 13px;
+    display: block;
+    width: 109px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.icon-login{
+ margin: 0 0 0 5px;
+ height: 35px;
+ width: auto;
+ display: block;   
+}
+
+.item-icon-left .icon, .item-icon-right .icon {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    font-size: 25px;
+}

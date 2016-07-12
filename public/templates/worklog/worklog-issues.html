@@ -1,0 +1,30 @@
+<!-- <ion-view view-title="{{chat.name}}"> -->
+<ion-view view-title="Work Log ">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+    </ion-nav-buttons>
+    <ion-content class="padding">
+      <ion-list>
+            <div class="filter-menu" ng-repeat="issue in issuesToLog.items ">
+                <ion-item class="item-stable element-relative" ng-click="toggleGroup(issue)" ng-class="{active: isIssueShow(issue)}">
+
+                    <i class="icon" ng-class="isIssueShow(issue) ? 'ion-chevron-up' : 'ion-chevron-down'"></i> &nbsp;
+                    <img ng-src="{{issue.iconIssueType}}">&nbsp; {{issue.key}} <span ng-show="issue.timeTracking.originalEstimateSeconds>0"> ({{issue.timeTracking.originalEstimate}}) </span>
+                    <button class="button button-small button-positive icon-left ion-paper-airplane btn-log" ng-show="isIssueShow(issue)" ng-click='saveWorklog(issue)'>Save</button>
+                    <span ng-show="issue.timeTracking.timeSpent== undefined" class="badge badge-balanced work-logged ">0h </span>
+                    <span ng-show="issue.timeTracking.timeSpent!= undefined" class="badge badge-balanced work-logged ">{{issue.timeTracking.timeSpent}}</span>
+                    <span ng-show="isIssueShow(issue)" class="badge badge-positive work-available">{{issue.timeLoggedLabel}}</span>
+                </ion-item>
+                <ion-item class="item-accordion" ng-show="isIssueShow(issue)">
+                    <div class="button-bar">
+                        <a class="button button-calm btn-space" ng-click="updateTimeLogged(issue,900)">15m</a>
+                        <a class="button button-calm btn-space" ng-click='updateTimeLogged(issue,3600)'>1h</a>
+                        <a class="button button-calm btn-space" ng-click='updateTimeLogged(issue,-3600)'>(-)1h</a>
+                        <a class="button button-calm btn-space" ng-click='updateTimeLogged(issue,-900)'>(-)15m</a>
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

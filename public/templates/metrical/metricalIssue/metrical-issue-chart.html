@@ -1,0 +1,13 @@
+<ion-view title="Chart Metric by Issue ">
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true">
+    <!-- <div class="hc-pie" titulo="chartTitle" items="listIssuesResume"></div> -->
+    <div class="row icon-row">
+    <div  style="margin: 0 auto ">
+        <charts-directive   ng-model="settingissuepie" id="metricalissuechart" titlechart="titlechart" settings="$root.settingissuepie" type="pie"></charts-directive>
+    </div>
+    </div>
+  </ion-content>
+</ion-view>

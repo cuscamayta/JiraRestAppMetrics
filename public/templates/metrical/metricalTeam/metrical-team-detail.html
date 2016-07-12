@@ -1,0 +1,26 @@
+<ion-view view-title="Detail Metrics by Team">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="developer in reportTeam" type="item-text-wrap">
+                <img ng-src="{{developer.userUrl}}">
+                <h2>{{developer.userName}}</h2>
+                <span class="badge badge-balanced work-logged ">{{developer.time}}</span>
+                <span class="badge badge-positive work-available">{{developer.timeEstimate}}</span>
+            </ion-item>
+            <!--<ion-item class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+                <h2>Total Time</h2>
+                <span class="badge badge-energized badge-logwork">{{reportTeam.totalTime}}</span>
+            </ion-item>-->
+        </ion-list>
+        <div class="list">
+            <label  class="item " style=" border: none; overflow: inherit;">
+                <span class="badgeNote badgeNote-energized  ">Logged</span>
+                  <span class="badgeNote badgeNote-balanced " style="right: 7px;">Estimated</span>
+            </label>
+           
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,25 @@
+<ion-view view-title="Setting">
+    <ion-content>
+        <ion-list>
+            <ion-toggle ng-model="settings.useCurrentUser">
+                Use Current User
+            </ion-toggle>
+            <label class="item item-input item-stacked-label" ng-show='!settings.useCurrentUser'>
+                <span class="input-label">User name :</span>
+                <input type="text" placeholder="write a user name" ng-model='settings.userName' style='text-transform: uppercase;'>
+            </label>
+            <ion-toggle ng-model="settings.useDefaultProject">
+                Show Defaul Project (RMTOOLS)
+            </ion-toggle>
+            <label class="item item-input item-stacked-label" ng-show='!settings.useDefaultProject'>
+                <span class="input-label">Project Name :</span>
+                <input type="text" placeholder="Write a project name" ng-model='settings.projectName' style='text-transform: uppercase;'>
+            </label>
+            <ion-toggle ng-model="settings.useDefaultDate">
+                Show Defaul Date (Current Date + 10)
+            </ion-toggle>
+            <datepicker value='settings.startDate' visible='settings.useDefaultDate' label='Start Date'></datepicker>
+            <datepicker value='settings.endDate' visible='settings.useDefaultDate' label='End Date'></datepicker>
+        </ion-list>
+    </ion-content>
+</ion-view>

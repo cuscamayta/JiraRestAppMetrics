@@ -1,0 +1,38 @@
+<ion-view title="Detail Metric by Bugs ">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+    </ion-nav-buttons>
+    <ion-content padding="true">
+        <div class="bar bar-header">
+            <div class="h1 title">{{settings.project.sprint.name }} - {{settings.project.name}} </div>
+        </div>
+        <div class="content has-header ionic-pseudo">
+            <div class="list">
+                <div class="item item-divider">
+                    Detail of Sprint
+                </div>
+                <a class="item item-icon-left">
+                    <i class="icon ion-flag" ></i>Version :
+                    <span class="badge badge-balanced">{{settings.project.version.name}}</span>
+                </a>
+                <a class="item item-icon-left">
+                    <i class="icon ion-calendar" ></i>Start date :
+                    <span class="badge badge-balanced">{{sprintDetail.startDate}}</span>
+                </a>
+                <a class="item item-icon-left">
+                    <i class=" icon ion-calendar" ></i>End date :
+                    <span class="badge badge-balanced">{{sprintDetail.endDate}}</span>
+                </a>
+                <div class="item item-divider">
+                    Count of bugs by priority
+                </div>
+                <div ng-repeat="priority in localdataPriority">
+                    <a class="item item-icon-left">
+                        <i class="icon {{priority.iconClass}}" ></i>{{priority.priority}} :
+                        <span class="badge badge-balanced">{{priority.count}}</span>
+                    </a>
+                </div>
+            </div>
+
+    </ion-content>
+</ion-view>

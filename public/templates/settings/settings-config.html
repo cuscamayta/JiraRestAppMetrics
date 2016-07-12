@@ -1,0 +1,29 @@
+<ion-view view-title="Settings">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-list>
+            <ion-toggle ng-model="settings.useCurrentUser">
+                Use Current User
+            </ion-toggle>
+            <label class="item item-input item-stacked-label" ng-show='!settings.useCurrentUser'>
+                <span class="input-label">User name :</span>
+                <input type="text" placeholder="write a user name" ng-model='settings.user.data.name' style='text-transform: uppercase;'>
+            </label>
+            <list-modal placeholder='Select Project' model='settings.project' valuetext='settings.project.name' list-data='settings.jira.projects'
+                label='Select a Project'></list-modal>
+
+            <list-modal placeholder='Select Version' model='settings.project.version' valuetext='settings.project.version.name' list-data='projectVersions'
+                label='Select a version' item-selected='settings.project' action-load='loadVersions(settings.project)'></list-modal>
+
+            <ion-toggle ng-model="settings.isInRangeDates">
+                Show Report using Sprint
+            </ion-toggle>
+            <datepicker value='settings.startDate' visible='settings.isInRangeDates' label='Start Date'></datepicker>
+            <datepicker value='settings.endDate' visible='settings.isInRangeDates' label='End Date'></datepicker>
+            <list-modal ng-show='settings.isInRangeDates' placeholder='Select Sprint' valuetext='settings.project.sprint.name' list-data='projectSprints'
+                label='Select a Sprint' model='settings.project.sprint' item-selected='settings.project' action-load='loadSprints(settings.project)'></list-modal>
+        </ion-list>
+    </ion-content>
+</ion-view>
