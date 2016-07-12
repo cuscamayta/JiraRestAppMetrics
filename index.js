@@ -26,36 +26,36 @@ global.__base = __dirname + '/server';
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
-app.all('*', function (req, res, next) {
-    // console.log('in all *');
-    try {
-        if (req.session.user || req.originalUrl == "/login") {
-            next();
-        } else
-            if (!req.session.user && req.signedCookies['user']) {
-                var config = req.signedCookies['user'];
-                req.session.user = config;
-                jira = new jiraApi('https', config.host, config.port, config.username, config.password, '2');
+// app.all('*', function (req, res, next) {
+//     // console.log('in all *');
+//     try {
+//         if (req.session.user || req.originalUrl == "/login") {
+//             next();
+//         } else
+//             if (!req.session.user && req.signedCookies['user']) {
+//                 var config = req.signedCookies['user'];
+//                 req.session.user = config;
+//                 jira = new jiraApi('https', config.host, config.port, config.username, config.password, '2');
 
-                res.cookie('user', config, { signed: true, expires: new Date(Date.now() + 900000), httpOnly: true });
-                next();
-            } else {
-                next(new Error(401));
-            }
-    } catch (ex) {
-        resp.send({ error: ex });
-    }
+//                 res.cookie('user', config, { signed: true, expires: new Date(Date.now() + 900000), httpOnly: true });
+//                 next();
+//             } else {
+//                 next(new Error(401));
+//             }
+//     } catch (ex) {
+//         resp.send({ error: ex });
+//     }
 
-});
+// });
 
-app.use(function (err, request, response, next) {
-    if (err instanceof Error) {
-        if (err.message === '401') {
-            response.status(401);
-            response.send({ code: 401, message: 'Not authorized', error: err });
-        }
-    }
-});
+// app.use(function (err, request, response, next) {
+//     if (err instanceof Error) {
+//         if (err.message === '401') {
+//             response.status(401);
+//             response.send({ code: 401, message: 'Not authorized', error: err });
+//         }
+//     }
+// });
 
 
 
