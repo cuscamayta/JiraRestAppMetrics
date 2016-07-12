@@ -31,12 +31,15 @@ exports.getMetricsByTypeIssue = function (issuesData) {
 
 exports.getMetricsByBugInPeriod = function (issuesData) {
     try {
+        
         var worklogs = new linq(issuesData.issues).SelectMany(function (issue) {
-            return issue.fields;
+            return getIssuesWithWorklogTime(issue);
         })
-        return worklogs;
+        console.log(worklogs);
+         return { worklogs: worklogs, sprintDetail: getSprintDetail(issuesData.issues) };
     }
     catch (error) {
+        console.log(error);
         return error;
     }
 }

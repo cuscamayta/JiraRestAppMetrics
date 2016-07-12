@@ -18,7 +18,7 @@ app.controller('timeSheetDetailIssuesController', function($scope, $stateParams,
         var response = worklogService.saveWorkLog(issue.timeLogged);
         response.then(function(data) {
             if (data.isSuccess)
-                 toastr.success("Se guardo correctamente");
+                 toastr.success("The worklog was saved successfully");
             else
               toastr.error("Error al guardar intente nuevamente");
               

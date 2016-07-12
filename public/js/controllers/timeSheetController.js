@@ -12,6 +12,8 @@ app.controller('timeSheetController', function ($scope, $location, $rootScope, t
             : timeSheetService.getTimeSheetInSprint(settings.project.sprint.id, settings.user.data.name);
 
         response.then(function (data) {
+            debugger;
+           if(data.length== undefined) toastr.warning("You dont have worksLogs ");
             $scope.worksLogs = data;
         });
     }

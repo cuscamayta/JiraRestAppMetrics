@@ -1,14 +1,16 @@
-app.controller('metricalTeamChartController', function ($scope, $rootScope, commonService, metricalTeamService, settingService) {
+app.controller('metricalTeamChartController', function($scope, $rootScope, commonService, metricalTeamService, settingService) {
 
 
 
-    $scope.$on("$ionicView.beforeEnter", function (event, data) {
+    $scope.$on("$ionicView.beforeEnter", function(event, data) {
         $scope.settings = settingService.getSettings();
 
         init();
     });
+    $rootScope.$on("/metricalTeam", function(event, data) {
+        init();
+    })
 
-   
     function init() {
 
         $scope.settings = settingService.getSettings();
@@ -18,14 +20,14 @@ app.controller('metricalTeamChartController', function ($scope, $rootScope, comm
 
     function loadChartOfReport() {
         if (!$rootScope.reportTeam)
-            metricalTeamService.getTimebyDeveloper($scope.settings.project.sprint.id).then(function (result) {
+            metricalTeamService.getTimebyDeveloper($scope.settings.project.sprint.id).then(function(result) {
 
                 clearSeries($rootScope.limitedPrioridades);
-                $scope.titlechart =  $scope.settings.project.sprint.name +" - " +  $scope.settings.project.name;
+                $scope.titlechart = $scope.settings.project.sprint.name + " - " + $scope.settings.project.name;
                 $rootScope.reportTeam = result;
                 if (result)
                     var data =
-                        $rootScope.limitedPrioridades.addSeriesPie(result.select(function (item) {
+                        $rootScope.limitedPrioridades.addSeriesPie(result.select(function(item) {
                             return [item.userName, item.timeValue];
                         }), $scope.titlechart);
             });

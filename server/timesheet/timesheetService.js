@@ -5,17 +5,25 @@ var linq = require('node-linq').LINQ,
     common = require('../common/common');
 
 exports.getTimeSheetInDates = function (data, user, startDate, endDate) {
+    try {
     var workglogsByDate = getWorklogsByDate(data.issues, user),
         workingDates = common.getDatesInRange(startDate, endDate);
     return getSprintWithDatesAndWorklogs(workglogsByDate, workingDates);
+    }catch (error) {
+        return error;
+    }
 }
 
 
 exports.getTimeSheetInSprint = function (data, user) {
+    try{
     var sprintDetail = common.getSprintDetail(data.issues),
         workglogsByDate = getWorklogsByDate(data.issues, user);
 
     return getSprintWithDatesAndWorklogs(workglogsByDate, sprintDetail.daysInSprint);
+    } catch (error) {
+        return error;
+    }
 }
 
 function getWorklogsByDate(issues, user) {

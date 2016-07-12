@@ -4,6 +4,10 @@ app.controller('bugPrioridadChartController', function($scope, $location, bugPri
         initialize();
     });
 
+    $rootScope.$on("/metrical", function(event, data) {
+        initialize();
+    })
+
     function initialize() {
         $scope.settings = settingService.getSettings();
         LoadChart();
@@ -29,7 +33,7 @@ app.controller('bugPrioridadChartController', function($scope, $location, bugPri
 
     }
     function getDataDetail() {
-     
+        debugger;
         if (!$rootScope.dataPriority) {
             var response = ($scope.settings.isInRangeDates) ? bugPrioridadService.getMetricsByTypeIssueByPriority($scope.settings) :
                 bugPrioridadService.getMetricsByBugPriorityDate($scope.settings);
@@ -40,7 +44,7 @@ app.controller('bugPrioridadChartController', function($scope, $location, bugPri
                 } else {
 
                     var responseWithoutVersion = ($scope.settings.isInRangeDates) ? bugPrioridadService.getMetricsByTypeIssueWitOutVersionByPriority($scope.settings) :
-                        getMetricsByBugPriorityDateWithOutVersion($scope.settings);
+                        bugPrioridadService.getMetricsByBugPriorityDateWithOutVersion($scope.settings);
                     responseWithoutVersion.then(function name(data) {
                         clearSeries($scope.limitedPrioridadesBug);
                         if (data && data.worklogs.items && (data.worklogs.items.length > 0)) {
@@ -91,7 +95,7 @@ app.controller('bugPrioridadChartController', function($scope, $location, bugPri
 
         if (($scope.settings.project.key != -1) && (($scope.settings.project.sprint.id != -1) ||
             (!$scope.settings.isInRangeDates)) && ($scope.settings.project.version != "")) {
-            $scope.titlechart =  $scope.settings.project.sprint.name +" - " +  $scope.settings.project.name
+            $scope.titlechart = $scope.settings.project.sprint.name + " - " + $scope.settings.project.name
             getDataDetail();
         }
     }

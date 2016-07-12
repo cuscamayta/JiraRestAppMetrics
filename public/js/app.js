@@ -11,11 +11,8 @@ app.run(function ($ionicPlatform, $rootScope, $location) {
     });
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-        console.log('tostate');
-        console.log(toState.url);
-        console.log('from state');
-        console.log(fromState.url);
 
+        $rootScope.$broadcast(toState.url);
     });
 })
 
@@ -151,7 +148,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
             templateUrl: 'templates/login.html'
         })
 
-    $urlRouterProvider.otherwise('/timesheet');
+    $urlRouterProvider.otherwise('/settings/config');
 });
 
 app.controller('TabsCtrl', function ($scope, $ionicSideMenuDelegate) {
